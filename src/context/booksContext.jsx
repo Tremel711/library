@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { library } from '../assets/books.json'
 
@@ -13,15 +13,36 @@ export const LibraryProvider = ({ children }) => {
     const [availableBooks, setAvailableBooks] = useState(library.length);
     const [toReadBooks, setToReadBooks] = useLocalStorage("booksToRead", [])
 
+    useEffect(() => {
+        // Cargar los libros almacenados en toReadBooks desde el almacenamiento local
+        const storedBooks = JSON.parse(localStorage.getItem("booksToRead")) || [];
+
+        // Calcular la diferencia entre el total de libros disponibles y los libros ya agregados
+        const addedBooksCount = storedBooks.length;
+        const newAvailableBooks = library.length - addedBooksCount;
+
+        // Actualizar el estado de availableBooks con la nueva cantidad calculada
+        setAvailableBooks(newAvailableBooks);
+    }, [toReadBooks]);
+
+
+
+
+
+
     const addBookToRead = (book) => {
-        
+
         const isBookAlreadyAdded = toReadBooks.find(existingBook => existingBook.title === book.title)
         console.log(isBookAlreadyAdded)
-        if(!isBookAlreadyAdded){
+        if (!isBookAlreadyAdded) {
             setToReadBooks([...toReadBooks, book])
             setAvailableBooks(prevCount => prevCount - 1)
         };
-   }
+    }
+    const getAvailableBooks = () => {
+        return (library.length - toReadBooks.length)
+    }
+    console.log(getAvailableBooks);
 
 
     return <LibraryContext.Provider value={{

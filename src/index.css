@@ -91,20 +91,14 @@ img{
 .modal-img{
   width: 150px;
 }
-.remove-modal{
-  position: fixed;
-}
-.modal-body{
-  display: flex;
-  justify-content: center;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: row-reverse;
-  align-self: stretch;
+
+.modal-info{
+  width: 50%;
+  padding-right: 40px;
+  padding-top: 20px;
 }
 
 .modal-card{
   width: 70%;
-  
 }
 
