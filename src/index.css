@@ -7,6 +7,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,17 +24,31 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+} */
+html{
+  margin-top: -24px;
+}
+body {
+  background-image: url('../public/253322.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+h5{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 button {
@@ -69,27 +84,37 @@ button:focus-visible {
 }
 img{
   width: 200px;
+  height: 299px;
 }
 .book-card-container{
     display: flex;
     flex-direction: row;
-    min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: transparent;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 0.25rem;
+    border-radius: 0.35rem;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 2px;
 }
 .book-info{
   display: flex;
+  justify-content: space-around;;
 }
 .book-name{
   width: 200px;
+  color: black;
+}
+.book-details{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 130px;
 }
 .modal-img{
   width: 150px;
+  height: 220px;
 }
 
 .modal-info{
@@ -101,4 +126,15 @@ img{
 .modal-card{
   width: 70%;
 }
-
+.pages{
+  margin-top: 11px;
+}
+#root{
+  width: 100%;
+}
+.card{
+  background-color: gray;
+}
+/* .book-card{
+  background-color: gray;
+} */

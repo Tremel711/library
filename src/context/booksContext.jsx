@@ -25,30 +25,31 @@ export const LibraryProvider = ({ children }) => {
         setAvailableBooks(newAvailableBooks);
     }, [toReadBooks]);
 
+    /* const deleteBookToRead = (book) => {
 
-
-
-
+        return
+    } */
 
     const addBookToRead = (book) => {
 
         const isBookAlreadyAdded = toReadBooks.find(existingBook => existingBook.title === book.title)
-        console.log(isBookAlreadyAdded)
+
         if (!isBookAlreadyAdded) {
             setToReadBooks([...toReadBooks, book])
             setAvailableBooks(prevCount => prevCount - 1)
         };
     }
-    const getAvailableBooks = () => {
-        return (library.length - toReadBooks.length)
-    }
-    console.log(getAvailableBooks);
+    const deleteBook = (book) => {
+        const updatedToReadBooks = toReadBooks.filter(existingBook => existingBook.title !== book.title);
+        setToReadBooks(updatedToReadBooks);
+    };
 
 
     return <LibraryContext.Provider value={{
         availableBooks,
         toReadBooks,
-        addBookToRead
+        addBookToRead,
+        deleteBook
 
 
     }}>{children} </LibraryContext.Provider>

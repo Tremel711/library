@@ -4,7 +4,7 @@ import { library } from './assets/books.json'
 import { useLibrary } from './context/booksContext'
 import { BookCard } from './components/BookCard'
 import { BookToRead } from './components/BookToReadModal'
-
+import { Header } from './components/Header'
 
 
 function App() {
@@ -24,13 +24,12 @@ function App() {
     addBookToRead(book);
   };
 
-
-  console.log(library);
   return (
     <>
-      <Container >
-        <div>{availableBooks} Libros Disponibles para leer</div>
-        <Button onClick={openModal}>Mostrar Libros para Leer</Button>
+      <Container className=''>
+        <Header openModal={openModal} availableBooks={availableBooks}>
+
+        </Header>
 
         {/* <button onClick={closeModal}>Cerrar</button> */}
 {/* 
@@ -38,7 +37,7 @@ function App() {
           display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))",
           gap: "1rem", alignItems: "flex-start"
         }} /> */}
-       <div  className='book-card-container'>
+       <div  className='book-card-container '>
           {library.map((bookData, i) => (
             <BookCard 
               key={i}
